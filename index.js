@@ -176,7 +176,7 @@ export default class Gemini {
 
 		const body = {
 			contents: [
-				...config.messages.flatMap(answerPairToParameter),
+				...config.messages,
 				{
 					parts: [{ text: message }],
 					role: "user",
@@ -300,7 +300,7 @@ export default class Gemini {
 					model: "gemini-pro",
 					maxOutputTokens: 800,
 				});
-				this.messages = this.config.messages.flatMap(answerPairToParameter);
+				this.messages = this.config.messages;
 			}
 
 			async ask(message, rawConfig) {
